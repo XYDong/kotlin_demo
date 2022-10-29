@@ -1,17 +1,26 @@
 package com.joker.kotlin_demo
 
+import androidx.core.graphics.component1
+
 /**
  * 在kotlin中，方法可以直接定义在文件中，而不是在类中
  */
 
 fun main() {
-    println(functionLearn(101))
-    Person().test1()
-    Person.test2()
-    println("NumUtil.doubleUtil(2): ${NumUtil.doubleUtil(2)}")
-    println("double(2): ${double(2)}")
-    println(append('H','e','l','l','o'))
-    println("magic : ${magic()}")
+//    println(functionLearn(101))
+//    Person().test1()
+//    Person.test2()
+//    println("NumUtil.doubleUtil(2): ${NumUtil.doubleUtil(2)}")
+//    println("double(2): ${double(2)}")
+//    println(append('H','e','l','l','o'))
+//    println("magic : ${magic()}")
+
+    test1()
+    println("test3(2,3):${test3(2,3)}")
+    println("test4(4,5):${test4(4,5)}")
+
+    test5()
+
 }
 
 fun functionLearn(days: Int): Boolean{
@@ -84,3 +93,66 @@ fun magic(): Int{
     val v1 = (0..100).random()
     return foo(v1)
 }
+
+/*************************lambda表达式**********************************/
+
+/**
+ * 无参情况
+ */
+fun test(){
+    println("无参数")
+}
+// lambda 代码
+val test1 = { println("无参数") }
+
+/**
+ * 有参数
+ */
+fun test2(a: Int, b:Int): Int{
+    return a+b
+}
+val test3:(Int,Int)-> Int  = { a,b -> a+b }
+
+/**
+ * 高级写法
+ */
+val test4 = {a:Int,b:Int -> a+b}
+
+/**
+ * it的用法（隐式参数，也是保留字段）
+ */
+fun test5(){
+    val arr = arrayOf(1,2,3,4,5)
+    println(arr.filter { it<5 })
+    println(arr.filter { it<5 }.component1())
+
+    val numberMap = mapOf("key1" to 1, "key2" to 2, "key3" to 3)
+    numberMap.forEach { (key,value) ->
+        println(value)
+    }
+    // 用下划线表示这个参数不适用，是个占位的
+    numberMap.forEach { (_,value) ->
+        println(value)
+    }
+
+
+
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
